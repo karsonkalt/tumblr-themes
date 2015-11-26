@@ -1,0 +1,220 @@
+<!--------------------------------
+WRITTEN BY KARSON KALT
+--------------------------------->
+
+<!--------------------------------
+META
+--------------------------------->
+<!DOCTYPE html>
+<html {block:English}lang="en" {/block:English}>
+<head>
+<link href='https://fonts.googleapis.com/css?family=Megrim' rel='stylesheet' type='text/css'>
+<title>{Title}</title>
+<link rel="shortcut icon" href="{Favicon}">
+</head>
+
+
+
+<!------------------------------
+STYLE
+------------------------------->
+<style>
+    * {
+        box-sizing: border-box;
+        }
+        h1 {
+            font-size: 42px;
+            line-height: 42px;
+            margin-bottom:0;
+        }
+        p {
+            font-size: 20px;
+        }
+        li {
+            font-size:20px;
+        }
+        body {
+            font-family: 'Megrim', monospace;
+            text-transform: uppercase;
+            background-color: {BackgroundColor};
+            margin:0;
+        }
+        img {
+            border:none;
+        }
+        a {
+            color:{AccentColor};
+        }
+    header {
+        width:30%;
+        position: fixed;
+        background-color: white;
+        margin: 0 20px;
+        max-width:300px;
+        overflow: hidden;
+        border-bottom: 5px solid {AccentColor};
+        }
+        .center {
+            width:100%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header a {
+            text-decoration: none;
+            color: inherit;
+        }
+        header img {
+            width: 64px;
+            margin: 0 auto;
+        }
+        .nav {
+            padding: 0;
+            list-style: none;
+        }
+        .nav a {
+            color: inherit;
+            text-decoration: underline;
+            font-weight: bold;
+        }
+    .content {
+        width: 65%;
+        max-width: 500px;
+        margin-left:35%;
+        }
+    .post {
+        max-width: 100%;
+        margin-bottom: 20px;
+        padding:-5px;
+        display: block;
+        background-color: white;
+        border-bottom: 5px solid {AccentColor};
+        }
+        .post img {
+            max-width: 100%;
+            margin: 0 auto -5px auto;
+        }
+        .post-text {
+            padding: 1px 20px;
+        }
+        .post-answer {
+            width: 64px;
+            height: 64px;
+        }
+        .post a {
+            color: {AccentColor};
+        }
+        .post:first-child {
+            margin-top: 20px;
+        }
+    @media screen and (max-width:800px) {
+        header {
+            width: 100%;
+            position: relative;
+            margin: 0;
+            max-width: 100%;
+        }
+        .center {
+            width:100%;
+            max-width:500px;
+        }
+        .content {
+            width: 100%;
+            margin: 0 auto;
+        }
+    }
+</style>
+
+
+
+<!------------------------------
+SCRIPTS
+------------------------------->
+<script type=“text/javascript” src=“http://codysherman.com/tools/infinite-scrolling/code”></script>
+
+
+
+<!------------------------------
+BODY
+------------------------------->
+<body>
+
+<header>
+<div class="center">
+<a href="{blogURL}"><img src="{PortraitURL-128}"></a>
+<a href="{blogURL}"><h1>{Title}</h1></a>
+{block:Description}<p>{Description}</p>{/block:Description}
+<ul class="nav">
+{block:AskEnabled}<li><a href="/ask">{AskLabel}</a></li>{/block:AskEnabled}
+<li><a href="/archive">Archive</a></li>
+</div>
+</header>
+
+<div class="content">
+
+    {block:Posts}
+    
+        {block:Text}
+            <span class="post post-text">
+                {block:title}<h1>{Title}</h1>{/block:title}
+                <p>{Body}</p>
+            </span>
+        {/block:Text}   
+    
+        {Block:Photo}
+            <div class="post">
+            {LinkOpenTag}
+            <img src="{PhotoURL-500}" alt="{PhotoAlt}"/>
+            {LinkCloseTag}
+            {block:Caption}
+                    <div class="post-text">
+                    {Caption}
+                    </div>
+                {/block:Caption}
+            </div>
+        {/Block:Photo} 
+    
+        {block:Photoset}
+            {block:Photos}
+            <div class="post">
+                <img src="{PhotoURL-500}"/>
+                {block:Caption}
+                    <div class="post-text">
+                        {Caption}
+                    </div>
+                {/block:Caption}
+            </div>
+            {/block:Photos}
+        {/block:Photoset}
+    
+        {Block:Quote}
+        <div class="post post-text">
+        <h1>{Quote}</h1>
+            {block:Source}
+                <p>{Source}</p>
+            {/block:Source}
+            </div>
+        {/Block:Quote}
+    
+        {block:Answer}
+            <div class="post post-text">
+                <img class="post-answer" src="{AskerPortraitURL-128}" alt="">
+                <p>{Asker}: {Question}</p>
+            </div>
+            {block:Answerer}
+            <div class="post post-text">
+                <img class="post-answer" src="{AnswererPortraitURL-128}" alt="">
+                <p>{Answerer}: {Answer}</p>
+            </div>
+            {/block:Answerer}
+            <div class="post post-text">
+            <img class="post-answer" src="{PortraitURL-128}" alt="">
+                <p>{Name}: {Replies}</p>
+            </div>
+        {/block:Answer}
+    
+    {/block:Posts}
+    
+    
+</div>
+</body>
+</html>
