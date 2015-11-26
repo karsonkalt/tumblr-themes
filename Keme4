@@ -1,0 +1,273 @@
+<!----------------------------------
+WRITTEN BY KARSON KALT
+----------------------------------->
+
+<!----------------------------------
+META
+----------------------------------->
+
+<!DOCTYPE html>
+<html {block:English}lang="en" {/block:English}>
+
+<head>
+    
+<link href='https://fonts.googleapis.com/css?family=PT+Mono' rel='stylesheet' type='text/css'>
+<title>{Title}</title>
+<meta name="text:Instagram username" />
+<meta name="if:Instagram link" />
+<link rel="shortcut icon" href="{Favicon}">
+    
+</head>
+
+
+
+<!----------------------------------
+STYLE
+----------------------------------->
+
+<style>
+    * {
+        box-sizing: border-box;
+        }
+        h1 {
+            font-size: 32px;
+            line-height: 32px;
+        }
+        p {
+            font-size: 14px;
+        }
+        li {
+            font-size:14px;
+        }
+        body {
+            font-family: 'PT Mono', "Courier New", Courier, monospace;
+            background-color: {BackgroundColor};
+            margin:20px auto;
+        }
+        .content {
+            width:940px;
+            margin:0 auto;
+            -moz-column-count: 3;
+            -moz-column-gap: 20px;
+            -webkit-column-count: 3;
+            -webkit-column-gap: 20px;
+        }
+        img {
+            border:none;
+        }
+    header {
+        background: url({HeaderImage});
+        background-size: cover;
+        width:300px;
+        height: 350px;
+        position: relative;
+        margin-right: 20px;
+        display: inline-block;
+        margin-bottom:20px;
+        }
+        header a {
+            text-decoration: none;
+            color: inherit;
+            transition: color .5s;
+            -webkit-transition: color .5s;
+        }
+        header a:hover {
+            color: {AccentColor};
+        }
+        header .container {
+            width: 100%;
+            position: absolute;
+            bottom: 0;
+        }
+        header .nameplate {
+            background-color: white;
+            padding :20px;
+            margin-top: -32px;
+            padding-top: 35px;
+        }
+        header .container img{
+            margin: 0 auto;
+            display: block;
+            width: 64px;
+            height: 64px;
+        }
+        .nav {
+            padding: 0;
+            list-style: none;
+            font-weight: bold;
+            color: inherit;
+            margin: 0;
+        }
+        .nav li {
+            padding-bottom:10px;
+        }
+        .nav li:last-child {
+            padding-bottom:0px;
+        }
+        .nav a:hover{
+            color: {AccentColor};
+        }
+    .post {
+        width: 300px;
+        background-color: white;
+        margin-bottom: 20px;
+        padding:-5px;
+        display:inline-block;
+        -webkit-column-break-inside: avoid;
+	    break-inside: avoid;
+    }
+        .post img {
+            max-width: 100%;
+            margin: 0 auto -4px auto;
+        }
+        .post-text {
+            padding:20px;
+        }
+        .post-answer {
+            width: 64px;
+            height: 64px;
+        }
+        .post a {
+            color: inherit;
+            transition: color .5s;
+            -webkit-transition: color .5s;
+        }
+        .post a:hover {
+            color: {AccentColor};
+        }
+        .previous {
+            float: left;
+        }
+        .next {
+            float: right;
+        }
+    @media screen and (max-width:980px) {
+        .content {
+        width:620px;
+        margin:0 auto;
+        -moz-column-count: 2;
+        -moz-column-gap: 20px;
+        -webkit-column-count: 2;
+        -webkit-column-gap: 20px;
+        }
+    }
+    @media screen and (max-width:660px) {
+        .content {
+        width:300px;
+        margin:0 auto;
+        -moz-column-count: 1;
+        -moz-column-gap: 20px;
+        -webkit-column-count: 1;
+        -webkit-column-gap: 20px;
+        }
+    }
+</style>
+
+
+<!----------------------------------
+SCRIPT
+----------------------------------->
+
+
+
+<!----------------------------------
+HTML
+----------------------------------->
+    
+<body>
+
+<div class="content">
+
+    <header>
+        <div class="container">
+            <a href="{blogURL}"><img src="{PortraitURL-128}"></a>
+            <div class="nameplate">
+                <a href="{blogURL}"><h1>{Title}</h1></a>
+                <p>{Description}</p>
+                <ul class="nav">
+                    {block:SubmissionsEnabled}<li><a href="/submit">{SubmitLabel}</a></li>{/block:SubmissionsEnabled}
+                    {block:AskEnabled}<li><a href="/ask">{AskLabel}</a></li>{/block:AskEnabled}
+                    {block:IfInstagramlink}<li><a href="http://www.instagram.com/{text:Instagram Username}">Instagram</a></li>{/block:IfInstagramlink}
+                </ul>
+            </div>
+        </div>
+    </header>
+    
+    {block:Posts}
+    
+        {block:Text}
+            <div class="post post-text">
+                {block:title}<h1>{Title}</h1>{/block:title}
+                <p>{Body}</p>
+            </div>
+        {/block:Text}   
+    
+        {Block:Photo}
+            <div class="post">
+            {LinkOpenTag}
+            <img src="{PhotoURL-500}" alt="{PhotoAlt}"/>
+            {LinkCloseTag}
+            {block:Caption}
+                    <div class="post-text">
+                    {Caption}
+                    </div>
+                {/block:Caption}
+            </div>
+        {/Block:Photo} 
+    
+        {block:Photoset}
+            {block:Photos}
+            <div class="post">
+                <img src="{PhotoURL-500}"/>
+                {block:Caption}
+                    <div class="post-text">
+                        {Caption}
+                    </div>
+                {/block:Caption}
+            </div>
+            {/block:Photos}
+        {/block:Photoset}
+    
+        {Block:Quote}
+        <div class="post post-text">
+        <h1>{Quote}</h1>
+            {block:Source}
+                <p>{Source}</p>
+            {/block:Source}
+            </div>
+        {/Block:Quote}
+    
+        {block:Answer}
+            <div class="post post-text">
+                <img class="post-answer" src="{AskerPortraitURL-128}" alt="">
+                <p>{Asker}: {Question}</p>
+            </div>
+            {block:Answerer}
+            <div class="post post-text">
+                <img class="post-answer" src="{AnswererPortraitURL-128}" alt="">
+                <p>{Answerer}: {Answer}</p>
+            </div>
+            {/block:Answerer}
+            <div class="post post-text">
+            <img class="post-answer" src="{PortraitURL-128}" alt="">
+                <p>{Name}: {Replies}</p>
+            </div>
+        {/block:Answer}
+    
+    {/block:Posts}
+
+    {block:Pagination}
+    <div class="post post-text">
+        {block:PreviousPage}
+            <a class="previous" href="{PreviousPage}">Previous</a>
+        {/block:PreviousPage}
+        {block:NextPage}
+            <a class="next" href="{NextPage}">Next</a>
+        {/block:NextPage}
+    </div>
+    {/block:Pagination}
+</div>
+    
+</body>
+
+</html>
