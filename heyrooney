@@ -155,14 +155,14 @@ STYLE
         left:300px;
         right:0;
         background-color:#f6f6f6;
-        padding-top:20px;
+        padding-top:40px;
         transition:.5s;
         min-height:100vh;
         }
     .post {
         width:100%;
         max-width: 500px;
-        margin-bottom: 20px;
+        margin-bottom: 40px;
         transition:.5s;
         padding:-5px;
         display: block;
@@ -171,6 +171,17 @@ STYLE
         -webkit-box-shadow: 0px 16px 27px -12px rgba(0,0,0,0.4);
         -moz-box-shadow: 0px 16px 27px -12px rgba(0,0,0,0.4);
         box-shadow: 0px 16px 27px -12px rgba(0,0,0,0.4);
+        }
+        .post::before {
+            content:"❤";
+            font-size:45px;
+            line-height:0;
+            height:0;
+            float:right;
+            color:{AccentColor};
+            position:relative;
+            top:0;
+            display:block;
         }
         .post img {
             max-width: 100%;
@@ -255,6 +266,7 @@ STYLE
 @media screen and (max-width:830px) {
     .content{
         padding-right:20px;
+        padding-top:20px;
         background-color:{AccentColor};
     }
     .next,
@@ -277,6 +289,9 @@ STYLE
         -webkit-box-shadow: none;
         -moz-box-shadow: none;
         box-shadow: none;
+    }
+    .post::before {
+        display:none;
     }
 }
 @media screen and (max-height:580px) {
@@ -352,12 +367,13 @@ BODY
         {/block:Text}   
     
         {Block:Photo}
-            <div class="post">
+            <div class="post-photoset">
             {LinkOpenTag}
             <img src="{PhotoURL-HighRes}" alt="{PhotoAlt}"/>
             {LinkCloseTag}
+            </div>
                 {block:Caption}
-                    <div class="post-text">
+                    <div class="post post-text">
                     {Caption}
                     {block:Date}
                     <ul class="interact">
@@ -368,7 +384,6 @@ BODY
                     {/block:Date}
                     </div>
                 {/block:Caption}
-            </div>
         {/Block:Photo} 
     
         {block:Photoset}
