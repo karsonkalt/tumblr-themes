@@ -213,7 +213,7 @@ STYLE
         .pager {
             width:100%;
             max-width:500px;
-            margin:-20px 0 20px 0;
+            margin:-40px 0 20px 0;
             overflow: auto;
         }
         .previous {
@@ -242,7 +242,7 @@ STYLE
         .interact {
             margin-bottom:20px;
             list-style:none;
-            height:22px;
+            min-height:22px;
             padding:0;
         }
         .interact li {
@@ -372,18 +372,16 @@ BODY
             <img src="{PhotoURL-HighRes}" alt="{PhotoAlt}"/>
             {LinkCloseTag}
             </div>
+            <div class="post post-text">
                 {block:Caption}
-                    <div class="post post-text">
                     {Caption}
-                    {block:Date}
-                    <ul class="interact">
+                {/block:Caption}
+                <ul class="interact">
                         <li>{LikeButton}</li>
                         <li>{ReblogButton}</li>
                         <li>{NoteCount} Notes</li>
                     </ul>
-                    {/block:Date}
-                    </div>
-                {/block:Caption}
+                 </div>
         {/Block:Photo} 
     
         {block:Photoset}
@@ -394,18 +392,16 @@ BODY
                 {LinkCloseTag}
             </div>
             {/block:Photos}
+            <div class="post post-text">
             {block:Caption}
-                    <div class="post post-text">
                     {Caption}
-                    {block:Date}
+                {/block:Caption}
                     <ul class="interact">
                         <li>{LikeButton}</li>
                         <li>{ReblogButton}</li>
                         <li>{NoteCount} Notes</li>
                     </ul>
-                    {/block:Date}
-                    </div>
-                {/block:Caption}
+                </div>
         {/block:Photoset}
     
         {Block:Quote}
