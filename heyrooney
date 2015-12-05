@@ -160,6 +160,7 @@ STYLE
         min-height:100vh;
         }
     .post {
+        width:100%;
         max-width: 500px;
         margin-bottom: 20px;
         transition:.5s;
