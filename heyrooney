@@ -1,1 +1,449 @@
+<!--------------------------------
+WRITTEN BY
 
+KARSON KALT
+@karsonkalt
+
+Copyright (c) 2015 Karson Kalt
+--------------------------------->
+
+<!--------------------------------
+META
+--------------------------------->
+<!DOCTYPE html>
+<html {block:English}lang="en" {/block:English}>
+<head>
+<title>{Title}</title>
+{block:Description}<meta name="description" content="{MetaDescription}" />{/block:Description}
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta name="HandheldFriendly" content="true" />
+<meta name="text:Instagram Username" content=""/>
+<meta name="text:Masc Tees URL" content=""/>
+<meta name="text:Prints URL" content=""/>
+<link href='https://fonts.googleapis.com/css?family=Caveat+Brush' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,200,200italic,300,300italic,400italic,600,600italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+<link rel="shortcut icon" href="{Favicon}">
+</head>
+
+
+<!--------------------------------
+STYLE
+--------------------------------->
+<style>
+    * {
+        box-sizing: border-box;
+        }
+        h1,
+        h2 {
+            font-size: 42px;
+            font-weight:700;
+        }
+        h3 {
+            font-size: 32px;
+            margin:0;
+        }
+        p {
+            font-size: 20px;
+            font-weight:300;
+        }
+        a {
+            text-decoration:none;
+            color:{AccentColor};
+        }
+        b {
+            font-family: 'Caveat Brush', cursive;
+            font-size:24px;
+            color:{AccentColor};
+        }
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+            background-color: white;
+            margin:0;
+            height:100vh;
+            min-height:380px;
+            min-width:700px;
+        }
+        img {
+            border:none;
+        }
+    header {
+        width:300px;
+        min-width:300px;
+        background-color: {AccentColor};
+        height:100%;
+        min-height:380px;
+        position:fixed;
+        padding:20px;
+        }
+        header a,
+        header p {
+            color:white;
+        }
+        .title {
+            display:inline;
+            font-style:italic;
+            font-weight:800;
+            text-transform:uppercase;
+            font-size:100px;
+            line-height:100px;
+            word-wrap: break-word;
+        }
+        .title-small {
+            display:none;
+            font-style:italic;
+            font-weight:800;
+        }
+        .nav {
+            list-style: none;
+            text-transform:none;
+            margin:0;
+            padding:0;
+        }
+        .nav a {
+            font-family: 'Caveat Brush', cursive;
+            font-size:24px;
+        }
+        .nav li {
+            margin-bottom:10px;
+            display:block;
+        }
+        .nav li:last-child {
+            margin-bottom:0;
+        }
+        .nav a::after {
+            content:"❤";
+            margin-left:10px;
+            transition:.5s;
+            overflow:none;
+            color:{AccentColor};
+        }
+        .nav a:hover::after {
+            color:rgba(255,255,255,.55);
+        }
+        .bottom {
+            bottom: 20px;
+            position: absolute;
+            width: auto;
+            padding-right:20px;
+        }
+        .masc-tees {
+            width:auto;
+            background-color:rgba(255,255,255,.55);
+            color:white;
+            padding: 10px;
+            transition:.5s;
+            border-radius:3px;
+            font-style:italic;
+            margin-top:20px;
+        }
+        .masc-tees:hover {
+            background-color:white;
+            color:{AccentColor};
+        }
+    .content {
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction:column;
+        position:absolute;
+        width:auto;
+        min-width:400px;
+        left:300px;
+        right:0;
+        background-color:#f6f6f6;
+        padding-top:20px;
+        transition:.5s;
+        min-height:100vh;
+        }
+    .post {
+        max-width: 500px;
+        margin-bottom: 20px;
+        transition:.5s;
+        padding:-5px;
+        display: block;
+        background-color: white;
+        border-bottom: 5px solid {AccentColor};
+        -webkit-box-shadow: 0px 16px 27px -12px rgba(0,0,0,0.4);
+        -moz-box-shadow: 0px 16px 27px -12px rgba(0,0,0,0.4);
+        box-shadow: 0px 16px 27px -12px rgba(0,0,0,0.4);
+        }
+        .post img {
+            max-width: 100%;
+            margin: 0 auto -5px auto;
+            height:auto;
+        }
+        .post-photoset {
+            max-width: 500px;
+            padding:-5px;
+            display: block;
+            background-color: white;
+        }
+        .post-photoset img {
+            max-width: 100%;
+            margin: 0 auto -5px auto;
+        }
+        .post-text {
+            padding: 1px 20px;
+        }
+        .post-answer {
+            width: 64px;
+            height: 64px;
+            padding-top: 20px;
+            box-sizing:content-box;
+        }
+        .answer-name {
+            font-weight:400;
+        }
+        .pager {
+            width:100%;
+            max-width:500px;
+            margin:-20px 0 20px 0;
+            overflow: auto;
+        }
+        .previous {
+            float: left;
+            border-radius:3px;
+            background-color: {AccentColor};
+            color:white;
+            border-radius:3px;
+            padding: 10px;
+            transition:.5s;
+        }
+        .next {
+            float: right;
+            border-radius:3px;
+            background-color: {AccentColor};
+            color:white;
+            border-radius:3px;
+            padding: 10px;
+            transition:.5s;
+        }
+        .next:hover,
+        .previous:hover {
+            background-color:rgba({RGBAccentColor},.55);
+            color:white;
+        }
+        .interact {
+            margin-bottom:20px;
+            list-style:none;
+            height:22px;
+            padding:0;
+        }
+        .interact li {
+            float:left;
+            margin:0;
+            padding:0;
+        }
+        .interact li:first-child {
+            margin-right:20px;
+        }
+        .interact li:last-child {
+            float:right;
+            font-style:italic;
+        }
+        hr {
+            height:5px;
+            background-color:{AccentColor};
+            border:none;
+        }
+        
+@media screen and (max-width:830px) {
+    .content{
+        padding-right:20px;
+        background-color:{AccentColor};
+    }
+    .next,
+    .previous {
+        background-color:rgba(255,255,255,.55);
+        color:white;
+    }
+    
+    .next:hover,
+    .previous:hover {
+        background-color:white;
+        color:{AccentColor};
+    }
+    .post h1,
+    .post h2 {
+        color:{AccentColor};
+    }
+    .post {
+        border-bottom: none;
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+        box-shadow: none;
+    }
+}
+@media screen and (max-height:580px) {
+    .title {
+        font-size:80px;
+        line-height:80px;
+    }
+}
+
+@media screen and (max-height:540px) {
+    .title {
+        font-size:60px;
+        line-height:60px;
+    }
+}
+
+@media screen and (max-height:460px) {
+    .title {
+        display:none;
+    }
+    .title-small {
+        display:inline;
+        font-size:50px;
+        line-height:50px;
+    }
+}
+</style>
+
+
+
+<!------------------------------
+BODY
+------------------------------->
+<body>
+
+<header>
+<a href="{blogURL}">
+<h1 class="title">HEY<br/>ROO<br/>NEY!</h1>
+<h1 class="title-small">HEY ROONEY!</h1></a>
+
+<div class="bottom">
+<ul class="nav">
+{block:AskEnabled}<li><a href="/ask">{AskLabel}</a></li>{/block:AskEnabled}
+{block:IfInstagramUsername}<li><a href="http://www.instagram.com/{text:Instagram Username}">Instagram</a></li>{/block:IfInstagramUsername}
+{block:IfPrintsURL}<li><a href="{text:PrintsURL}">Prints</a>{/block:IfPrintsURL}
+</ul>
+{block:IfMascTeesURL}
+<a href="{text:MascTeesURL}">
+<div class="masc-tees">
+<h3>Masc 4 Masc Tees Now Available!</h3>
+</div>
+</a>
+{/block:IfMascTeesURL}
+</div>
+</header>
+
+<div class="content">
+
+    {block:Posts}
+    
+        {block:Text}
+            <div class="post post-text">
+                {block:title}<h1>{Title}</h1>{/block:title}
+                <p>{Body}</p>
+                {block:Date}
+                    <ul class="interact">
+                        <li>{LikeButton}</li>
+                        <li>{ReblogButton}</li>
+                        <li>{NoteCount} Notes</li>
+                    </ul>
+                {/block:Date}
+            </div>
+        {/block:Text}   
+    
+        {Block:Photo}
+            <div class="post">
+            {LinkOpenTag}
+            <img src="{PhotoURL-HighRes}" alt="{PhotoAlt}"/>
+            {LinkCloseTag}
+                {block:Caption}
+                    <div class="post-text">
+                    {Caption}
+                    {block:Date}
+                    <ul class="interact">
+                        <li>{LikeButton}</li>
+                        <li>{ReblogButton}</li>
+                        <li>{NoteCount} Notes</li>
+                    </ul>
+                    {/block:Date}
+                    </div>
+                {/block:Caption}
+            </div>
+        {/Block:Photo} 
+    
+        {block:Photoset}
+            {block:Photos}
+            <div class="post-photoset">
+                {LinkOpenTag}
+                <img src="{PhotoURL-HighRes}"/>
+                {LinkCloseTag}
+            </div>
+            {/block:Photos}
+            {block:Caption}
+                    <div class="post post-text">
+                    {Caption}
+                    {block:Date}
+                    <ul class="interact">
+                        <li>{LikeButton}</li>
+                        <li>{ReblogButton}</li>
+                        <li>{NoteCount} Notes</li>
+                    </ul>
+                    {/block:Date}
+                    </div>
+                {/block:Caption}
+        {/block:Photoset}
+    
+        {Block:Quote}
+        <div class="post post-text">
+        <h1>{Quote}</h1>
+            {block:Source}
+                <p>- {Source}</p>
+            {/block:Source}
+            {block:Date}
+                    <ul class="interact">
+                        <li>{LikeButton}</li>
+                        <li>{ReblogButton}</li>
+                        <li>{NoteCount} Notes</li>
+                    </ul>
+                    {/block:Date}
+            </div>
+        {/Block:Quote}
+    
+        {block:Answer}
+            <div class="post post-text">
+                <img class="post-answer" src="{AskerPortraitURL-128}" alt="">
+                <p class="answer-name">{Asker}:</p><p>{Question}</p>
+            {block:Answerer}
+            <hr/>
+                <img class="post-answer" src="{AnswererPortraitURL-128}" alt="">
+                <p><span class="answer-name">{Answerer}:</span>{Answer}</p>
+            {/block:Answerer}
+            <hr/>
+            <img class="post-answer" src="{PortraitURL-128}" alt="">
+                <p><span class="answer-name">{Name}:</span>{Replies}</p>
+                {block:Date}
+                    <ul class="interact">
+                        <li>{LikeButton}</li>
+                        <li>{ReblogButton}</li>
+                        <li>{NoteCount} Notes</li>
+                    </ul>
+                    {/block:Date}
+            </div>
+        {/block:Answer}
+    
+    {/block:Posts}
+    
+            {block:Pagination}
+    <div class="pager">
+        {block:PreviousPage}
+            <p><a class="previous" href="{PreviousPage}">Previous</a></p>
+        {/block:PreviousPage}
+        {block:NextPage}
+            <p><a class="next" href="{NextPage}">More</a></p>
+        {/block:NextPage}
+    </div>
+        {/block:Pagination}
+    
+    
+</div>
+</body>
+</html>
