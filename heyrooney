@@ -301,7 +301,7 @@ MEDIA QUERIES
     position:static;
     padding:20px;
     height:auto;
-    min-height:auto;
+    min-height:initial;
     }
     .title {
         margin: auto;
