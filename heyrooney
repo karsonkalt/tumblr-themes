@@ -38,6 +38,10 @@ STYLES
     75% { transform: scale(1) rotate(-15deg) translateY(2px)}
     100% { transform: scale(1); } 
 }
+@keyframes slideOut {
+  0% { transform: translateY(0%); opacity:100%;}
+  100% { transform: translateY(-100%); opacity: 0;}
+}
 /*--------------------------------
 UNIVERSAL
 --------------------------------*/
@@ -52,6 +56,7 @@ UNIVERSAL
     h3 {
         font-size: 32px;
         margin:0;
+        transition:.5s;
     }
     p {
         font-size: 20px;
@@ -72,7 +77,6 @@ UNIVERSAL
         margin:0;
         height:100vh;
         min-height:380px;
-        min-width:700px;
     }
     img {
         border:none;
@@ -94,26 +98,25 @@ header {
         color:white;
     }
     .title {
-        display:inline;
+        font-size:50px;
+        line-height:50px;
         font-style:italic;
         font-weight:800;
-        text-transform:uppercase;
-        font-size:100px;
-        line-height:100px;
-        word-wrap: break-word;
         transition:.5s;
+        position:relative;
     }
-    .title-small {
-        display:none;
-        font-style:italic;
-        font-weight:800;
-        transition:;
+    .masthead {
+        width:260px;
+        height:260px;
+        padding-bottom:20px;
+        transition:.5s;
     }
     .nav {
         list-style: none;
         text-transform:none;
         margin:0;
         padding:0;
+        transition:.5s;
     }
     .nav a {
         font-family: 'Caveat Brush', cursive;
@@ -145,13 +148,13 @@ header {
         position: absolute;
         width: auto;
         padding-right:20px;
+        transition:.5s;
     }
     .masc-tees {
         width:auto;
         background-color:rgba(255,255,255,.55);
         color:white;
         padding: 10px;
-        transition:.5s;
         border-radius:3px;
         font-style:italic;
         margin-top:20px;
@@ -290,8 +293,76 @@ CONTENT
 /*--------------------------------
 MEDIA QUERIES
 --------------------------------*/
+@media screen and (max-width:700px) {
+    header {
+    width:100%;
+    min-width:400px;
+    background-color: {AccentColor};
+    position:static;
+    padding:20px;
+    height:auto;
+    min-height:auto;
+    }
+    .title {
+        margin: auto;
+        top:-30px;
+        width:300px;
+    }
+    .masthead {
+        animation: .5s ease-in-out forwards slideOut;
+        height:0;
+    }
+    .nav {
+        width:230px;
+        margin:-20px auto auto auto;
+    }
+    .nav a {
+        font-family: 'Caveat Brush', cursive;
+        font-size:24px;
+    }
+    .nav li {
+        margin-right:20px;
+        display:inline-block;
+    }
+    .nav li:last-child {
+        margin-right:0;
+    }
+    .nav a::after {
+        content:none;
+    }
+    .bottom {
+        position: static;
+        padding-right:0;
+    }
+    .masc-tees {
+        margin-top:10px;
+        text-align:center;
+    }
+    h3 {
+        font-size:20px;
+    }
+    .content {
+    position:relative;
+    width:auto;
+    left:0;
+    right:0;
+    min-width:400px;
+    }
+    .post {
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    }
+}
+
+@media screen and (min-width:701px) {
+    
 @media screen and (max-width:830px) {
-    .content{
+    body {
+        background-color:{AccentColor};
+        transition:0;
+    }
+    .content {
         padding-right:20px;
         padding-top:20px;
         background-color:{AccentColor};
@@ -333,29 +404,31 @@ MEDIA QUERIES
         margin:-20px 0 20px 0;
     }
 }  
-@media screen and (max-height:580px) {
-    .title {
-        font-size:80px;
-        line-height:80px;
+@media screen and (max-height:680px) {
+    .masthead {
+        width:200px;
+        height:200px;
+        padding-bottom:0;
+    }
+
+@media screen and (max-height:620px) {
+.masthead {
+        width:150px;
+        height:150px;
+        padding-bottom:0;
     }
 }
-
-@media screen and (max-height:540px) {
+@media screen and (max-height:570px) {
+.masthead {
+        animation: .5s ease-in-out forwards slideOut;
+        height:0;
+    }
     .title {
-        font-size:60px;
-        line-height:60px;
+        top:-60px;
+        left:0
+        
     }
 }
-
-@media screen and (max-height:460px) {
-    .title {
-        display:none;
-    }
-    .title-small {
-        display:inline;
-        font-size:50px;
-        line-height:50px;
-    }
 }
 </style>
 
@@ -368,8 +441,8 @@ MARKUP
 
 <header>
     <a href="{blogURL}">
-        <h1 class="title">HEY<br/>ROO<br/>NEY!</h1>
-        <h1 class="title-small">HEY ROONEY!</h1>
+        <img class="masthead" src="http://static.tumblr.com/y4tblfp/ZKjnz29y4/masthead.svg"/>
+        <h1 class="title">{Title}</h1>
     </a>
     <div class="bottom">
         <ul class="nav">
