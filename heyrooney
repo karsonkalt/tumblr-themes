@@ -425,7 +425,7 @@ MEDIA QUERIES
         height:0;
     }
     .title {
-        top:-30px;
+        top:-60px;
         left:0
         
     }
