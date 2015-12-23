@@ -1,0 +1,234 @@
+<!--------------------------------
+WRITTEN BY
+
+KARSON KALT
+@karsonkalt
+
+Copyright (c) 2015 Karson Kalt
+--------------------------------->
+
+
+
+<!--------------------------------
+META
+--------------------------------->
+<!DOCTYPE html>
+<html {block:English}lang="en" {/block:English}>
+<head>
+    <title>{Title}</title>
+    {block:Description}<meta name="description" content="{MetaDescription}" />{/block:Description}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="HandheldFriendly" content="true" />
+    <link rel="shortcut icon" href="{Favicon}">
+    <link href='https://fonts.googleapis.com/css?family=PT+Mono' rel='stylesheet' type='text/css'>
+</head>
+
+
+
+<!--------------------------------
+STYLES
+--------------------------------->
+<style>
+/*--------------------------------
+UNIVERSAL
+--------------------------------*/
+    * {
+    box-sizing: border-box;
+    font-family: "PT Mono", sans-serif;
+    text-transform:uppercase;
+    }
+    h1,
+    h2,
+    h3 {
+        font-size: 32px;
+        font-weight:400;
+        line-height:32px;
+    }
+    p {
+        font-size: 20px;
+        font-weight:400;
+        line-height: 20px;
+    }
+    a {
+        text-decoration:none;
+    }
+    b {
+        font-size:24px;
+        color:{AccentColor};
+        text-transform:uppercase;
+    }
+    body {
+        background-color:white;
+        margin:0;
+    }
+    img {
+        border:none;
+    }
+/*--------------------------------
+HEADER
+--------------------------------*/
+    header {
+        position:fixed;
+        color:white;
+        left:20px;
+        top:20px;
+        z-index:1;
+        border:5px solid rgba(255,255,255,.5);
+        transition:.5s;
+    }
+    header:hover {
+        border:5px solid {AccentColor};
+    }
+    header:hover .title {
+        background-color: {AccentColor};
+    }
+    header:hover .nav {
+        color: {AccentColor};
+        background-color:rgba(255,255,255,.5);
+    }
+    header:hover .nav li a {
+        color: {AccentColor};
+    }
+    .title {
+        background-color:rgba(255,255,255,.5);
+        padding:10px;
+        color:white;
+        margin:0;
+        transition:.5s;
+    }
+    .nav {
+        list-style:none;
+        padding-left:15px;
+        margin:0;
+        color:white;
+        transition:.5s;
+    }
+    .nav li {
+        display:block;
+        padding:0 0 10px 0;
+    }
+    .nav li a {
+        color:white;
+        transition: color .5s;
+    }
+    .nav li a:hover {
+        text-decoration:underline;
+    }
+    .nav li:first-child {
+        padding-top:10px;
+    }
+/*--------------------------------
+CONTENT
+--------------------------------*/
+    .content {
+        display:flex;
+        height:100vh;
+        width:100%;
+        overflow:auto;
+        position:relative;
+    }
+    .post-photoset{
+        overflow:hidden;
+        position:relative;
+        flex-shrink:0;
+        margin:0;
+    }
+    .post-photoset img {
+        width:auto;
+        height:100vh;
+        -webkit-filter: opacity(.5) grayscale(.75);
+        transition: -webkit-filter .5s;
+    }
+    .post-photoset:hover img {
+        -webkit-filter:none;
+    }
+    .pager {
+        position:fixed;
+        bottom:20px;
+        right:20px;
+        z-index:1;
+        background-color:rgba(255,255,255,.5);
+        font-size:20px;
+        line-height:20px;
+    }
+    .previous,
+    .next {
+        color:white;
+        padding:10px;
+        margin:0;
+    }
+/*--------------------------------
+MEDIA QUERIES
+--------------------------------*/
+    @media screen and (max-width:700px) {
+        .content {
+            flex-direction:column;
+            height:100%;
+            width:100vw;
+        }
+        .post-photoset img {
+             -webkit-filter:none;
+             width:100vw;
+            height:100%;
+            margin-bottom:-5px;
+        }
+</style>
+
+
+
+<!------------------------------
+MARKUP
+------------------------------->
+<body>
+
+<header>
+    <a href="{blogURL}">
+        <h1 class="title">{Title}</h1>
+    </a>
+    <ul class="nav">
+        <li><a href="#">Instagram</a></li>
+        <li><a href="#">Tagged/Me</a></li>
+        <li><a href="/ask">Ask Me</a></li>
+        <li><a href="http://www.tumblr.com/liked/by/majormitchmajor">Likes</a></li>
+    </ul>
+</header>
+
+<div class="content">
+
+    {block:Posts}
+    
+        {Block:Photo}
+            <div class="post-photoset">
+            {LinkOpenTag}
+            <img src="{PhotoURL-HighRes}" alt="{PhotoAlt}"/>
+            {LinkCloseTag}
+            </div>
+        {/Block:Photo} 
+    
+        {block:Photoset}
+            {block:Photos}
+            <div class="post-photoset">
+                {LinkOpenTag}
+                <img src="{PhotoURL-HighRes}"/>
+                {LinkCloseTag}
+            </div>
+            {/block:Photos}
+        {/block:Photoset}
+    
+    {/block:Posts}
+    
+            {block:Pagination}
+    <div class="pager">
+        {block:PreviousPage}
+            <p><a class="previous" href="{PreviousPage}">Previous</a></p>
+        {/block:PreviousPage}
+        {block:NextPage}
+            <p><a class="next" href="{NextPage}">More</a></p>
+        {/block:NextPage}
+    </div>
+        {/block:Pagination}
+    
+    
+</div>
+</body>
+</html>
