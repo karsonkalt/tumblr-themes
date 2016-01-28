@@ -15,13 +15,14 @@ META
 <!DOCTYPE html>
 <html {block:English}lang="en" {/block:English}>
 <head>
-    <title>{Title}</title>
+    <title>Mitchmajor Photo</title>
     {block:Description}<meta name="description" content="{MetaDescription}" />{/block:Description}
     <meta name="text:Instagram Username" content=""/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <meta name="HandheldFriendly" content="true" />
     <link rel="shortcut icon" href="{Favicon}">
-<link href='https://fonts.googleapis.com/css?family=Oxygen:400,300,700' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Ubuntu:400,700' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Cabin' rel='stylesheet' type='text/css'>
 </head>
 
 
@@ -35,38 +36,23 @@ UNIVERSAL
 --------------------------------*/
     * {
     box-sizing: border-box;
-    font-family: 'Oxygen', sans-serif;
-    }
-    h1,
-    h2,
-    h3 {
-        font-size: 32px;
-        font-weight:700;
-        line-height:32px;
-    }
-    p {
-        font-size: 20px;
-        font-weight:100;
-        line-height: 20px;
     }
     a {
         text-decoration:none;
+        color:rgba({RGBAccentColor},.5);
+        transition:.5s;
     }
-    b {
-        font-size:24px;
-        color:#000;
-        text-transform:uppercase;
+    a:hover {
+        color:rgba({RGBAccentColor},.75);
     }
     body {
-        background-color:#fff;
+        background-color:{BackgroundColor};
+        font-family: 'Ubuntu', Arial, sans-serif;
+        height:100vh;
+        overflow:hidden;
         margin:0;
     }
     img {
-        border:none;
-    }
-    hr {
-        height:3px;
-        background-color:white;
         border:none;
     }
 /*--------------------------------
@@ -74,167 +60,158 @@ HEADER
 --------------------------------*/
     header {
         position:absolute;
-        color:#000;
-        z-index:1;
         height:100vh;
-        width:200px;
-        border-right:3px solid black;
-        box-shadow: 10px 0px 53px -12px rgba(0,0,0,.5);
-        padding:20px;
-        background: linear-gradient(-45deg, rgba({RGBAccentColor},0) 0%,rgba({RGBAccentColor},.25) 50%,#ffffff 50%,#ffffff 50%,#ffffff 100%);
+        padding:25px;
+        min-height:500px;
+        width:180px;
+    }
+    .container {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
     }
     .title {
-        color:#000;
-        margin:0;
-        transition:.5s;
-        font-weight:700;
-        text-transform:uppercase;
-    }
-    .description {
         color:{AccentColor};
-        margin-bottom:0;
+        margin:0;
+        text-transform:lowercase;
+        font-family:"Cabin",Arial;
+        font-size:35px;
+        line-height:35px;
+        transition:.5s;
+    }
+    .title:hover {
+        padding-left:3px;
+    }
+    .title-vertical {
+        display:none;
+        color:{AccentColor};
+        margin:0;
+        text-transform:lowercase;
+        font-family:"Cabin",Arial;
+        font-size:35px;
+        line-height:35px;
+    }
+    .nav,
+    .pager {
+        list-style:none;
+        margin:0 0 0 0;
+        transition:.5s;
+        text-transform:lowercase;
+    }
+    .pager {
+        position:absolute;
+        bottom:50px;
+        padding:0;
     }
     .nav {
-        list-style:none;
-        margin:0;
-        transition:.5s;
-        padding:20px 0 0 0;
-        text-transform:uppercase;
+        padding:50px 0 0 0;
     }
-    .nav li {
+    .nav li,
+    .pager li {
         display:block;
-        padding:0 0 10px 0;
+        padding-bottom:10px;
     }
-    .nav li a {
-        color:{AccentColor};
-        transition:color .5s;
+    .pager li:last-child {
+        padding-bottom:0;
     }
-    .nav li a:hover {
-        text-decoration:underline;
-        color:#000;
+    .nav li a,
+    .pager li a {
+        color:rgba({RGBAccentColor},.5);
+        transition:.5s;
     }
-    .nav li:first-child {
+    .nav li a:hover,
+    .pager li a:hover {
+        color:rgba({RGBAccentColor},.75);
+        padding-left:10px;
+    }
+    .nav li:first-child,
+    .pager li:first-child {
         padding-top:10px;
     }
 /*--------------------------------
 CONTENT
 --------------------------------*/
     .content {
-        position:relative;
         display:flex;
         height:100vh;
         overflow-x:scroll;
-        z-index:0;
-        position:relative;
-        margin-left:200px;
+        margin-left:180px;
+        overflow-y:hidden;
     }
-    .post-text a {
-        color:#000;
-        transition:color .5s;
-    }
-    .post-text a:hover {
-        text-decoration:underline;
-        color:{AccentColor};
-    }
-    .post-text {
-        overflow:hidden;
-        position:relative;
+    .post {
         flex-shrink:0;
-        margin:0;
-        max-width:400px;
+    }
+    .post img {
         height:100vh;
-        padding:20px;
-        color:#000;
-        overflow-y:scroll;
-        background-color:#fff;
+        padding:50px 25px 50px 0;
+        min-height:500px;
     }
-    .post-text img {
-        width:100%;
-        height:auto;
-        -webkit-filter: opacity(.5) grayscale(1);
-        transition: -webkit-filter .5s;
-    }
-    .post-photoset{
-        overflow:hidden;
-        position:relative;
-        flex-shrink:0;
-        margin:0;
-        background-color:white;
-    }
-    .post-photoset img {
-        width:auto;
-        height:100vh;
-    }
-    .quote {
-        font-weight:300;
-    }
-    .quote::first-letter {
-        font-size: 50px;
-        font-weight:700;
-        /*font-family: 'Nova Cut', cursive;*/
-    }
-    .pager {
-        position:fixed;
-        bottom:20px;
-        right:20px;
-        z-index:1;
-        background-color:#fff;
-        box-shadow: 0px 10px 53px -12px rgba(0,0,0,0.54);
-        border:3px solid #000;
-        transition:background-color .5s;
-        max-height:50px;
-        padding-bottom:10px;
-    }
-    .pager:hover {
-        background-color:#000;
-    }
-    .pager:hover .previous,
-    .pager:hover .next {
-        color:#fff;
-    }
-    .previous,
-    .next {
-        padding:10px;
-        margin:0;
-        color:{AccentColor};;
-        text-transform:uppercase;
-        transition:color .5s;
-        font-size:15px;
-    }
-    .answer-name {
-        text-decoration:none;
-        font-weight:700;
-        text-transform:lowercase;
+    .permalink {
+        padding:50px 25px 50px 0;
+        color:black;
     }
 /*--------------------------------
 MEDIA QUERIES
 --------------------------------*/
-    /*@media screen and (max-width:700px) {*/
-    /*    .content {*/
-    /*        flex-direction:column;*/
-    /*        min-height:100%;*/
-    /*        width:100vw;*/
-    /*        margin-left:0;*/
-    /*        padding-left:200px;*/
-    /*    }*/
-    /*    .post-photoset img {*/
-    /*        -webkit-filter:none;*/
-    /*        width:100vw;*/
-    /*        height:100%;*/
-    /*        margin-bottom:-5px;*/
-    /*    }*/
-    /*    .post-text {*/
-    /*        width:100vw;*/
-    /*        max-width:100vw;*/
-    /*        min-height:initial;*/
-    /*    }*/
-    /*    .post-text {*/
-    /*        background-color:#fff;*/
-    /*        height:initial;*/
-    /*    }*/
-    /*    header:hover .nav {*/
-    /*        background-color:rgba(255,255,255,1);*/
-    /*    }*/
+/*@media screen and (max-width:500px) {*/
+/*    header {*/
+/*        position:static;*/
+/*        height:initial;*/
+/*        min-height:120px;*/
+/*        width:100%;*/
+/*    }*/
+/*    .container {*/
+/*        position: absolute;*/
+/*        left: 50%;*/
+/*        transform: translateX(-50%);*/
+/*        top:20px;*/
+/*        fransform: translateY(0);*/
+/*    }*/
+/*    .title {*/
+/*        display:none;*/
+/*    }*/
+/*    .title-vertical {*/
+/*        display:initial;*/
+/*    }*/
+/*    .nav,*/
+/*    .pager {*/
+/*        padding:10px 0 0 0;*/
+/*    }*/
+/*    .nav li,*/
+/*    .pager li {*/
+/*        display:inline-block;*/
+/*        padding:0 10px 0 0;*/
+/*    }*/
+/*    .nav li a:hover,*/
+/*    .pager li a:hover {*/
+/*        padding-left:0px;*/
+/*    }*/
+/*    .nav li:first-child,*/
+/*    .pager li:first-child {*/
+/*        padding-top:10px;*/
+/*    }*/
+/*    .content {*/
+/*        position:static;*/
+/*        height:100%;*/
+/*        overflow-x:hidden;*/
+/*        overflow-y:scroll;*/
+/*        flex-direction:column;*/
+/*        margin:0;*/
+/*        padding:0;*/
+/*    }*/
+/*    .post img {*/
+/*        width:100%;*/
+/*        height:auto;*/
+/*        padding:0 25px 25px 25px;*/
+/*        margin:0;*/
+/*        min-height:0;*/
+/*    }*/
+/*    .post img:last-child {*/
+/*        margin-bottom:100px;*/
+/*    }*/
+/*}*/
+
+
 </style>
 
 
@@ -245,86 +222,72 @@ MARKUP
 <body>
 
 <header>
-    <a href="{blogURL}">
-        <h1 class="title">{Title}</h1>
-    </a>
-    {block:Description}
-            <p class="description">{Description}</p>
-        {/block:Description}
-    <ul class="nav">
-        {block:IfInstagramUsername}<li><a target="_blank" href="http://www.instagram.com/{text:Instagram Username}">Instagram</a></li>{/block:IfInstagramUsername}
-        <li><a href="/tagged/me">Tagged/Me</a></li>
-        <li><a href="/ask">Ask Me</a></li>
-    </ul>
+        <div class="container">
+            <a href="{blogURL}">
+                <h1 class="title">mitch<br/>major<br/>photo</h1>
+                <h1 class="title-vertical">mitchmajorphoto</h1>
+            </a>
+            <ul class="nav">
+                <li><a href="mailto:mitchxjet@gmail.com" target="_top">Contact</a></li>
+                {block:IfInstagramUsername}
+                    <li><a target="_blank" href="http://www.instagram.com/{text:InstagramUsername}">Instagram</a></li>
+                {/block:IfInstagramUsername}
+            </ul>
+        </div>
+            {block:Pagination}
+                <ul class="pager">
+                    {block:PreviousPage}
+                        <li><a href="{PreviousPage}">Previous</a></li>
+                    {/block:PreviousPage}
+                    {block:NextPage}
+                        <li><a href="{NextPage}">More</a></li>
+                    {/block:NextPage}
+                </ul>
+            {/block:Pagination}
 </header>
 
 <div class="content">
+
     {block:Posts}
-    
-        {block:Text}
-                <div class="post-text">
-                    {block:title}<h1>{Title}</h1>{/block:title}
-                    <p>{Body}</p>
-                </div>
-        {/block:Text}  
     
         {Block:Photo}
             <a href="{PostURL}">
-            <div class="post-photoset">
-            {LinkOpenTag}
-            <img src="{PhotoURL-HighRes}" alt="{PhotoAlt}"/>
-            {LinkCloseTag}
-            </div>
+                <div class="post">
+                    <a href="{Permalink}">
+                        <img src="{PhotoURL-HighRes}" alt="{PhotoAlt}"/>
+                    </a>
+                </div>
             </a>
         {/Block:Photo} 
-    
+        
         {block:Photoset}
             {block:Photos}
-            <div class="post-photoset">
-                {LinkOpenTag}
-                <img src="{PhotoURL-HighRes}"/>
-                {LinkCloseTag}
-            </div>
+                    <div class="post">
+                        <a href="{Permalink}">
+                            <img src="{PhotoURL-HighRes}" alt="{PhotoAlt}"/>
+                        </a>
+                    </div>
             {/block:Photos}
-        {/block:Photoset}
-    
-    {Block:Quote}
-        <div class="post-text">
-            <h1 class="quote">{Quote}</h1>
-            {block:Source}
-                <p>- {Source}</p>
-            {/block:Source}
-        </div>
-    {/Block:Quote}
-    
-            {block:Answer}
-            <div class="post-text">
-                <p class="answer-name">{Asker}:</p><p>{Question}</p>
-            {block:Answerer}
-            <hr/>
-                <p><span class="answer-name">{Answerer}:</span>{Answer}</p>
-            {/block:Answerer}
-            {block:Replies}
-            <hr/>
-                <p><span class="answer-name">{Name}:</span>{Replies}</p>
-                {/block:Replies}
-            </div>
-        {/block:Answer}
-    
-    {/block:Posts}
-    
-            {block:Pagination}
-    <div class="pager">
-        {block:PreviousPage}
-            <p><a class="previous" href="{PreviousPage}">Previous</a></p>
-        {/block:PreviousPage}
-        {block:NextPage}
-            <p><a class="next" href="{NextPage}">More</a></p>
-        {/block:NextPage}
-    </div>
-        {/block:Pagination}
-    
+        {/Block:Photoset} 
+        
+        {block:PermalinkPage}
+        
+        <div class="post permalink">
+                {block:Date}<p>{Month} {DayOfMonth}, {Year}</p>{/block:Date}
+                {block:Caption}<p>{Caption}</p>{/block:Caption}
+                {block:PostNotes}<p>{NoteCount} Notes</p>{/block:PostNotes}
+                {block:HasTags}<p><a href="{TagURL}">{block:Tags} #{Tag}{/block:Tags}</a></p>{/block:HasTags}
+                {block:RebloggedFrom}<p>Reblogged from <a href="{ReblogParentURL}">{ReblogParentName}</a></p>
+      {/block:RebloggedFrom}
+      
+      </div>
+  
+        {/block:PermalinkPage}
+        
+  {/block:Posts}
+            
     
 </div>
+
 </body>
 </html>
