@@ -153,63 +153,7 @@ CONTENT
 /*--------------------------------
 MEDIA QUERIES
 --------------------------------*/
-/*@media screen and (max-width:500px) {*/
-/*    header {*/
-/*        position:static;*/
-/*        height:initial;*/
-/*        min-height:120px;*/
-/*        width:100%;*/
-/*    }*/
-/*    .container {*/
-/*        position: absolute;*/
-/*        left: 50%;*/
-/*        transform: translateX(-50%);*/
-/*        top:20px;*/
-/*        fransform: translateY(0);*/
-/*    }*/
-/*    .title {*/
-/*        display:none;*/
-/*    }*/
-/*    .title-vertical {*/
-/*        display:initial;*/
-/*    }*/
-/*    .nav,*/
-/*    .pager {*/
-/*        padding:10px 0 0 0;*/
-/*    }*/
-/*    .nav li,*/
-/*    .pager li {*/
-/*        display:inline-block;*/
-/*        padding:0 10px 0 0;*/
-/*    }*/
-/*    .nav li a:hover,*/
-/*    .pager li a:hover {*/
-/*        padding-left:0px;*/
-/*    }*/
-/*    .nav li:first-child,*/
-/*    .pager li:first-child {*/
-/*        padding-top:10px;*/
-/*    }*/
-/*    .content {*/
-/*        position:static;*/
-/*        height:100%;*/
-/*        overflow-x:hidden;*/
-/*        overflow-y:scroll;*/
-/*        flex-direction:column;*/
-/*        margin:0;*/
-/*        padding:0;*/
-/*    }*/
-/*    .post img {*/
-/*        width:100%;*/
-/*        height:auto;*/
-/*        padding:0 25px 25px 25px;*/
-/*        margin:0;*/
-/*        min-height:0;*/
-/*    }*/
-/*    .post img:last-child {*/
-/*        margin-bottom:100px;*/
-/*    }*/
-/*}*/
+
 
 
 </style>
